@@ -159,7 +159,7 @@ body{
 .btn-primary.c-cyan:hover{background:linear-gradient(135deg,var(--c-teal),var(--c-cyan));}
 .btn-primary.c-outline{background:rgba(255,255,255,0.9);color:var(--text);border:1px solid rgba(18,65,112,0.10);}
 .btn-primary.c-outline:hover{color:var(--c-blue);border-color:rgba(38,102,127,0.24);background:#fff;}
-.soc-row{display:flex;gap:6px;}
+.soc-row{display:flex;gap:6px;flex-wrap:wrap;}
 .soc{width:42px;height:42px;background:rgba(255,255,255,0.92);color:var(--text2);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:14px;border:1px solid rgba(18,65,112,0.10);border-radius:50%;transition:all .15s ease;box-shadow:0 10px 18px rgba(18,65,112,0.06);}
 .soc:hover{background:var(--c-blue);color:#fff;border-color:var(--c-blue);transform:translateY(-2px);}
 
@@ -235,9 +235,9 @@ body{
 .strength-title{font-size:12px;font-weight:800;color:var(--text);letter-spacing:.04em;}
 .strength-desc{font-size:12px;color:var(--text2);line-height:1.65;}
 
-/* ── PROJECTS — old style: full image reveal on hover, NO color bar ── */
+/* ── PROJECTS ── */
 .proj-grid{display:grid;grid-template-columns:1fr;gap:12px;align-content:start;}
-.proj-card{background:rgba(248,250,252,0.75);border:1px solid rgba(15,23,42,0.08);padding:0;margin-bottom:0;transition:all .15s ease;position:relative;overflow:hidden;display:block;min-height:240px;isolation:isolate;cursor:default;border-radius:var(--radius-sm);}
+.proj-card{background:rgba(248,250,252,0.75);border:1px solid rgba(15,23,42,0.08);padding:0;margin-bottom:0;transition:all .15s ease;position:relative;overflow:hidden;display:block;min-height:240px;isolation:isolate;cursor:default;border-radius:var(--radius-sm);width:100%;}
 .proj-card:hover{border-color:rgba(15,23,42,0.12);box-shadow:0 22px 48px rgba(15,23,42,0.14);transform:translateY(-2px);}
 .proj-media{position:absolute;inset:0;width:auto;height:100%;min-width:0;min-height:100%;max-width:none;border:none;border-radius:inherit;opacity:0;overflow:hidden;transform:scale(1.02);filter:blur(10px);will-change:transform,opacity,filter;transition:opacity .4s ease,transform .55s cubic-bezier(.19,1,.22,1),filter .4s ease;z-index:1;}
 .proj-card:hover .proj-media{opacity:1;transform:scale(1);filter:blur(0);}
@@ -463,6 +463,36 @@ body[data-theme="dark"] .sec-divider{background:linear-gradient(90deg,rgba(77,21
   .proj-card-inner{min-height:auto;padding:18px 16px 16px;}
   .proj-card:hover .proj-card-inner{opacity:1;transform:none;pointer-events:auto;}
 }
+
+/* ── SMALL MOBILE (480px and below) ── */
+@media(max-width:480px){
+  .player-name{font-size:24px !important;}
+  .av-block{width:116px !important;height:116px !important;}
+  .hud-logo{font-size:10px;letter-spacing:.10em;}
+  .action-row{flex-direction:column;gap:8px;}
+  .action-row .btn-primary{width:100%;justify-content:center;}
+  .interest-tile{font-size:11px;padding:6px 12px;}
+  .tech-tile{font-size:10px;padding:3px 9px;}
+  .tl-title{font-size:16px;}
+  .chat-panel{width:calc(100vw - 24px);right:12px;}
+  .chat-fab{right:12px;bottom:12px;}
+  .ov-how-grid{grid-template-columns:1fr;}
+  .block{padding:18px 16px;}
+  .two-col{gap:14px;}
+  .sec-chip{font-size:10px;padding:4px 10px;}
+  .proj-name{font-size:14px;}
+  .proj-desc{font-size:12px;}
+  .profile-layout{gap:14px;}
+  .tl-list li{font-size:12px;}
+  .strength-desc{font-size:11px;}
+  .about-txt{font-size:13px;}
+  .portfolio-shell{padding:0 12px 24px;}
+  .game-board{padding:20px 0 40px;}
+  .hud-inner{padding:10px 14px;}
+  .hud-btn,.hud-link{min-width:38px;height:38px;}
+  .theme-toggle-btn,.game-toggle-btn{width:38px;height:38px;}
+}
+
 @media(max-width:680px){
   .profile-layout{display:flex;flex-direction:column;align-items:flex-start;text-align:left;}
   .action-row,.soc-row{justify-content:flex-start;}
@@ -484,8 +514,11 @@ body[data-theme="dark"] .sec-divider{background:linear-gradient(90deg,rgba(77,21
   .chat-panel{width:calc(100vw - 32px);right:16px;bottom:84px;}
   .chat-fab{right:16px;bottom:16px;}
   .game-modal-box{max-width:100vw;width:100%;border-radius:14px;height:min(560px,90vh);}
+  .footer-status{font-size:10px;}
 }
+
 @media(hover:none),(pointer:coarse){
+  .proj-grid{grid-template-columns:1fr;}
   .proj-card{min-height:auto;}
   .proj-media{position:relative;inset:auto;width:100%;height:220px;min-height:220px;opacity:1;border:none;border-bottom:1px solid rgba(15,23,42,0.08);border-radius:0;transform:none;filter:none;}
   .proj-card-inner{min-height:auto;}
@@ -520,9 +553,7 @@ body[data-theme="dark"] .sec-divider{background:linear-gradient(90deg,rgba(77,21
   <ellipse cx="1180" cy="580" rx="110" ry="110" fill="url(#glowA)" opacity=".35"/>
 </svg>
 
-<!-- ══════════════════════════════════════════════════════
-     GAME MODAL — Air Attack 1941
-══════════════════════════════════════════════════════ -->
+<!-- GAME MODAL -->
 <div class="game-modal-overlay" id="gameModal">
   <div class="game-modal-box">
     <div class="gm-head">
@@ -980,9 +1011,10 @@ const allProjects = [
 ];
 
 /* ── RENDER PROJECTS ── */
+/* Featured: MinSU Event Scheduling(5), MinSU HealthSync(1), Panchitan ni Unchang(7), Meat Quality Detection(3) */
 function renderMainProjects(){
   const grid=document.getElementById('mainProjGrid');
-  allProjects.slice(0,4).forEach(p=>{
+  [5,1,7,3].map(i=>allProjects[i]).forEach(p=>{
     const langs=p.langs.map(l=>`<span class="proj-lang">${l.label}</span>`).join('');
     const btns=[
       p.live?`<a href="${p.live}" target="_blank" class="pbtn live"><i class="fas fa-play"></i>LIVE</a>`:'',
@@ -1257,7 +1289,7 @@ const chatMsgs=document.getElementById('chatMsgs');
 const chatIn=document.getElementById('chatIn');
 const intents=[
   {kw:["skill","tech","stack","frontend","ui","ux","design","wcag","accessibility"],reply:()=>"Chynna's core skills are UI/UX Design, Wireframing, Prototyping, and Accessibility. She codes in HTML5, CSS, JavaScript, Tailwind, React, and PHP, and uses tools like Figma, Photoshop, Canva, Firebase, and GitHub."},
-  {kw:["project","portfolio","allserve","healthsync","spotinode","meat","mushroom","lavalust","panchitan"],reply:m=>{if(m.includes("allserve"))return"AllServe is an AI-powered community health platform for LGUs & BHWs — real-time analytics, automated reporting, AI health assessments. Built with React, Firebase & Tailwind.";if(m.includes("healthsync"))return"MinSU HealthSync is a clinic management system for Mindoro State University — e-health records, medicine inventory, automated reminders, role-based access.";if(m.includes("spotinode"))return"SpotiNode is a Spotify-inspired music streaming app built with Node.js — JWT auth, real-time streaming, playlists, and a persistent player.";if(m.includes("meat"))return"Meat Quality Detection uses ML to classify meat freshness as New, Semi-new, or Rotten from photos. Built with Python & Django.";if(m.includes("mushroom"))return"The Mushroom Cultivation Monitor is an IoT system that tracks humidity & temperature, with automated humidification triggers.";if(m.includes("panchitan")||m.includes("lavalust"))return"PanchitanLavalust is a full PHP Laravel food ordering system for a local pancit restaurant with delivery, pickup, and reservations.";return"Projects include: AllServe (AI health), MinSU HealthSync (clinic), SpotiNode (music), Meat Detection (ML), PanchitanLavalust (food), MinSU Venue Scheduling, Mushroom Monitor (IoT), and Panchitan ni Unchang (no-code).";}},
+  {kw:["project","portfolio","allserve","healthsync","spotinode","meat","mushroom","lavalust","panchitan","event","venue","scheduling"],reply:m=>{if(m.includes("allserve"))return"AllServe is an AI-powered community health platform for LGUs & BHWs — real-time analytics, automated reporting, AI health assessments. Built with React, Firebase & Tailwind.";if(m.includes("healthsync")||m.includes("minsu health"))return"MinSU HealthSync is a clinic management system for Mindoro State University — e-health records, medicine inventory, automated reminders, role-based access.";if(m.includes("spotinode"))return"SpotiNode is a Spotify-inspired music streaming app built with Node.js — JWT auth, real-time streaming, playlists, and a persistent player.";if(m.includes("meat"))return"Meat Quality Detection uses ML to classify meat freshness as New, Semi-new, or Rotten from photos. Built with Python & Django.";if(m.includes("mushroom"))return"The Mushroom Cultivation Monitor is an IoT system that tracks humidity & temperature, with automated humidification triggers.";if(m.includes("panchitan")||m.includes("lavalust"))return"PanchitanLavalust is a full PHP Laravel food ordering system for a local pancit restaurant with delivery, pickup, and reservations.";if(m.includes("event")||m.includes("venue")||m.includes("scheduling"))return"MinSU Event's Venue Scheduling is a system for Mindoro State University that handles real-time venue availability, reservation management, and visual documentation.";return"Featured projects: MinSU Event Venue Scheduling, MinSU HealthSync (clinic), Panchitan ni Unchang (no-code food), and Meat Quality Detection (ML). See all 8 by clicking 'All 8' in the projects section!";}},
   {kw:["experience","intern","job","work","company","builder"],reply:()=>"Chynna interned at New San Jose Builders Inc. as Developer & QA — designing accessible UIs, collaborating on prototypes, and documenting test cases."},
   {kw:["education","school","college","university","minsu","degree"],reply:()=>"Chynna is currently pursuing BS Information Technology at Mindoro State University–Calapan since 2022, and is a Dean's Lister from 2023 to 2025."},
   {kw:["cert","badge","certificate","fortinet","python","cybersecurity","analytics"],reply:()=>"4 certificates: IT Specialist (Data Analytics), Python Programming 2, Fortinet Certified Associate in Cybersecurity, and Fortinet Certified Fundamentals in Cybersecurity."},
